@@ -476,7 +476,7 @@ def main():
     #filterExACoutput('Exac_parse_OUT.csv')
 
 
-   # mineMutPred(UniProt,ENST,Chr)
+   # #mineMutPred(UniProt,ENST,Chr)
 # mine_dbNSFP(Chr, ENSG)
 # extract_dbNSFP(FILENAME4)
 
