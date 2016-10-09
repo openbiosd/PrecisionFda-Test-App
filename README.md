@@ -8,7 +8,7 @@ exac_parser.py is currently configured to mine missense variants for specific ge
 gene ID, transcript ID, variant position (amino acid), reference (REF) amino acid, variant amino acid (ALT), allele frequncy (AF) and Allele Count (AC) 
 but this can be extended to much more, such as population metrics, splicing variants, SNPs etc etc etc. 
 
-parser_exac.py exac mining function is currently named "lines" and takes in ENST, ENSP and Chr (transcript id, protein id and chromosome #) 
+parser_exac.py exac mining function is currently named "lines(ENST,ENSP,Chr)" and takes in ENST, ENSP and Chr (transcript id, protein id and chromosome #)  and returns a specified .csv file with missense variants in the queried protein.
 you will need local copy of Exac on your machine to run it, download current version here (4GB) ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3.1/ExAC.r0.3.1.sites.vep.vcf.gz 
 for readme on Exac file look in ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3.1/
 
