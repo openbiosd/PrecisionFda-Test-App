@@ -23,7 +23,8 @@ http://provean.jcvi.org/index.php
 mines an aggregate of pre-compute consequence scores for all known protein
 https://sites.google.com/site/jpopgen/dbNSFP
 
-#<i>mine_MutPred:</i> mines pre-computed consequence scores and biochemical hypothesis for all known proteins
+#<i>mine_MutPred:</i>
+mines pre-computed consequence scores and biochemical hypothesis for all known proteins
 http://mutpred.mutdb.org/about.html
 
 These are optional feautures for this project, but it would be great to join the output of all of these into one dataframe in python.
