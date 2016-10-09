@@ -13,18 +13,5 @@ takes in ENST, ENSP and Chr (transcript id, protein id and chromosome #)  and re
 Download from here (4GB): ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3.1/ExAC.r0.3.1.sites.vep.vcf.gz 
 for readme on Exac file look in ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3.1/
 
-other functions which are working (badly) and are commented out in exac_parser.py are: 
 
-#<i>mine_PROVEAN:</i>
-mines pre-computed consequence scores for amino acid substitutions for all known proteins
-http://provean.jcvi.org/index.php
 
-#<i>mine_dbNSFP:</i>
-mines an aggregate of pre-compute consequence scores for all known protein
-https://sites.google.com/site/jpopgen/dbNSFP
-
-#<i>mine_MutPred:</i>
-mines pre-computed consequence scores and biochemical hypothesis for all known proteins
-http://mutpred.mutdb.org/about.html
-
-These are optional feautures for this project, but it would be great to join the output of all of these into one dataframe in python.
