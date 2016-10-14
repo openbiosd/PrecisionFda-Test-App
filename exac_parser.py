@@ -7,20 +7,21 @@ returns csv file.
 
 '''
 from __future__ import print_function
-from chardet.universaldetector import UniversalDetector
-import sys, traceback, subprocess, gzip, glob, tarfile, os, signal
+
+import sys, traceback, subprocess, gzip,  tarfile, os, signal
 import pandas as pd
 import csv
-import numpy as np
-from pandas import HDFStore, DataFrame
-import h5py
+
+from pandas import DataFrame
+
 import zipfile
-import odo
 from collections import OrderedDict
 import collections
-from time import sleep
+
 import string
 import json
+import pdb
+
 
 VCF_HEADER = ['CHROM', 'POS', 'ID', 'REF', 'ALT', 'QUAL', 'FILTER', 'INFO']
 
@@ -58,7 +59,7 @@ Chr = "16" #PKD1
 Chr = "17"
 
 # change directory to working with DAta
-os.chdir("../Data/")
+#os.chdir("../Data/")
 cwd = os.getcwd()
 
 
@@ -70,17 +71,17 @@ def count_comments(filename):
 	https://gist.github.com/slowkow/6215557
 	"""
     comments = 0
-    print("comm")
+
     # fn_open = gzip.open if filename.endswith('.gz') else open
     # with fn_open(filename) as fh:
     for line in filename:
         if line.startswith('#'):
             comments += 1
-            print(line)
+            #print(line)
         else:
-            print("no more")
+
             break
-    print(comments)
+
     return comments
 
 
@@ -119,18 +120,19 @@ def lines(filename, Chr):
 	https://gist.github.com/slowkow/6215557
 	"""
     # TODO: see if there is a way to first map chromosomes within file and keep this data in a temp file?
-    print('opening file')
+    #print('opening file')
     fn_open = gzip.open if filename.endswith('.gz') else open
     with fn_open(filename, 'rt') as fh, open(FILENAME6, 'w') as csvout:
         a = csv.writer(csvout)
         first_row = ('GENE_ID', 'TRANSCRIPT', 'TRANSCRIPT CHANGE', 'PROTEIN CHANGE', 'AA_POS', 'AA_CHANGE', 'MUTATION',
                      'ALLELE COUNT', 'ALLELE FREQUENCY')
         a.writerows([first_row])
-        print('opened file', filename)
+        print ('opened file', filename)
         print('looking for chromosome ', Chr)
-        items = list(range(1, 23))
-        l = len(items)
+        #items = list(range(1, 23))
+        #l = len(items)
         FinalResults = OrderedDict()
+
         # printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
         for good_line in find_good_lines(fh):
             # parse data line to find protein ID
@@ -146,22 +148,22 @@ def lines(filename, Chr):
                         if ENSP in line and "missense_variant" in line:  # TODO: add deletions
                             AlleleCount = ()
                             AlleleFrequency = ()
-                            print(':::::')
+                            #print(':::::')
                             # print(p_good_line['AF'])
-                            print(len(p_good_line['AC']))
+                            #print(len(p_good_line['AC']))
                             if len(p_good_line['AC']) > 1:
-                                print('AC1', (p_good_line['AC']))
-                                print('AF1', (p_good_line['AF']))
+                                #print('AC1', (p_good_line['AC']))
+                                #print('AF1', (p_good_line['AF']))
                                 try:
                                     AlleleCount = sum(list(map(int, p_good_line[
                                         'AC'])))  # list added to break object, if iterate dont need list(
                                     AlleleFrequency = sum(list(map(float, p_good_line['AF'])))
                                 except ValueError:
-                                    print("error")
+                                    #print("error")
                                     AlleleCount = p_good_line['AC']
                                     AlleleFrequency = float(p_good_line['AF'])
-                                    print('AF2:', p_good_line['AF'])
-                                    print('AC2:', p_good_line['AC'])
+                                    #print('AF2:', p_good_line['AF'])
+                                    #print('AC2:', p_good_line['AC'])
                             else:
                                 AlleleCount = int(p_good_line['AC'])
                                 AlleleFrequency = float(p_good_line['AF'])
@@ -170,11 +172,11 @@ def lines(filename, Chr):
                             # print(match[3], match[6],match[10],match[11],match[14], match[15])
                             aa_change = match[15].split('/')
                             variant = [aa_change[0], match[14], aa_change[1]]
-                            print(variant)
+                            #print(variant)
                             # print(':::::::::::::::::::::::::::::::::::::::::::::::')
                             row_line = [match[3], match[6], match[10], match[11], match[14], match[15],
                                         ''.join(variant), AlleleCount, AlleleFrequency]
-                            print(row_line)
+                            #print(row_line)
                             a.writerows([row_line])
     # print(FinalResults)
 
@@ -186,6 +188,7 @@ def lines(filename, Chr):
 def find_good_lines(fh):
     #TODO: rewrite to account for Chr vs int variables and to reduce unnecessary searching.
     i='0'
+    #print (fh)
     for line in fh:
 
         chrom = line[0:2]
@@ -193,13 +196,10 @@ def find_good_lines(fh):
         if line.startswith('#'):
             continue
         if chrom == Chr:
-
-
             yield line
         else:
             if line[0:2] != i:
-
-                print (line[0:2])
+                #print (line[0:2])
                 i = line[0:2]
 
 
@@ -223,33 +223,34 @@ def _get_value(value):
 
 
 def filterExACoutput(file):
-    print('reading file')
+    #print('reading file')
     df = pd.read_csv(file)
     col_names = []
 
     col_names = [i for i in string.printable[:len(df.columns)]]
     df.columns = [c.rstrip() for c in df.columns]
-    print(col_names)
+    #print(col_names)
     df.columns = [col_names]
     # df[1] = [col_names[1].astype(str)]
     # df[]
 
 
-    print('done')
+    #print('done')
     df = df[df['1'] == "missense_variant"]
+
     df = df[df['3'] == GENE]
     df = df[df['6'] == ENST]
     df.to_csv('Filtered_Exac_OUT.csv')
 
-    print(df.head())
+    #print(df.head())
 
 
 
 def main():
 
 
-    lines('ExAC.r0.3.1.sites.vep.vcf.gz', Chr)
-
+    lines(sys.argv[1], Chr)
+    #lines('ExAC.r0.3.1.sites.vep.vcf.gz', Chr)
 
     #filterExACoutput('Exac_parse_OUT.csv')
 
