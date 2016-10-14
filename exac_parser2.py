@@ -114,20 +114,20 @@ def parse(line):
     return result
 
 
-def lines(filename, Chr):
+def lines(Chr):
     """Open an optionally gzipped VCF file and generate an OrderedDict for
 	each line.
 	https://gist.github.com/slowkow/6215557
 	"""
     # TODO: see if there is a way to first map chromosomes within file and keep this data in a temp file?
     #print('opening file')
-    fn_open = gzip.open if filename.endswith('.gz') else open
-    with fn_open('/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf', 'rt') as fh, open(FILENAME6, 'w') as csvout:
+    #fn_open = gzip.open #if filename.endswith('.gz') else open
+    with open('/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf', 'rt') as fh, open(FILENAME6, 'w') as csvout:
         a = csv.writer(csvout)
         first_row = ('GENE_ID', 'TRANSCRIPT', 'TRANSCRIPT CHANGE', 'PROTEIN CHANGE', 'AA_POS', 'AA_CHANGE', 'MUTATION',
                      'ALLELE COUNT', 'ALLELE FREQUENCY')
         a.writerows([first_row])
-        print ('opened file', filename)
+        print ('opened file')
         print('looking for chromosome ', Chr)
         #items = list(range(1, 23))
         #l = len(items)
@@ -176,7 +176,7 @@ def lines(filename, Chr):
                             # print(':::::::::::::::::::::::::::::::::::::::::::::::')
                             row_line = [match[3], match[6], match[10], match[11], match[14], match[15],
                                         ''.join(variant), AlleleCount, AlleleFrequency]
-                            #print(row_line)
+                            print(row_line)
                             a.writerows([row_line])
     # print(FinalResults)
 
