@@ -131,6 +131,8 @@ def lines(Chr):
         print('looking for chromosome ', Chr)
         for filename in os.listdir(os.getcwd()):
 		print(filename)
+		cwd=os.getcwd()
+		print cwd
 	#items = list(range(1, 23))
         #l = len(items)
         FinalResults = OrderedDict()
