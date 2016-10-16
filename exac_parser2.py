@@ -25,13 +25,16 @@ import pdb
 
 VCF_HEADER = ['CHROM', 'POS', 'ID', 'REF', 'ALT', 'QUAL', 'FILTER', 'INFO']
 
+Chr = sys.argv[1]
+ENST = sys.argv[2]
+OUT_FILE = "ExAC_OUT.csv"
 # Sets transcript ID to search in dataframe
 
-Chr = "17"
+# Chr = "17"
+#
+# ENST = "ENST00000262410" #MAPT
 
-ENST = "ENST00000262410" #MAPT
-
-OUT_FILE = "MAPT_ExACScores.csv"
+#OUT_FILE = "MAPT_ExACScores.csv"
 
 
 
@@ -90,15 +93,15 @@ def parse(line):
     return result
 
 
-def lines(Chr):
+def search_exac(Chr, ENST, OUT_FILE):
     """Open an optionally gzipped VCF file and generate an OrderedDict for
 	each line.
 	Modiefied from: https://gist.github.com/slowkow/6215557
 	"""
     # TODO: see if there is a way to first map chromosomes within file and keep this data in a temp file?
     #print('opening file')
-    #fn_open = gzip.open #if filename.endswith('.gz') else open
-    with open('/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf', 'rt') as fh, open(OUT_FILE, 'w') as csvout:
+    #fn_open = gzip.open if filename.endswith('.gz') else open
+    with open('/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf', 'rt') as fh, open(OUT_FILE, 'w') as csvout: #
         a = csv.writer(csvout)
         first_row = ('GENE_ID', 'TRANSCRIPT', 'TRANSCRIPT CHANGE', 'PROTEIN CHANGE', 'AA_POS', 'AA_CHANGE', 'MUTATION',
                      'ALLELE COUNT', 'ALLELE FREQUENCY')
@@ -121,7 +124,7 @@ def lines(Chr):
                 p_good_line = parse(good_line)
                 for k, e in enumerate(query):
                     for line in e.splitlines():
-                        if ENSP in line and "missense_variant" in line:
+                        if ENST in line and "missense_variant" in line:
                             AlleleCount = ()
                             AlleleFrequency = ()
                             #print(':::::')
@@ -221,7 +224,9 @@ def filterExACoutput(file):
 def main():
 
 
-    lines(Chr)
+
+
+    search_exac(Chr, ENST, OUT_FILE)
     #lines('ExAC.r0.3.1.sites.vep.vcf.gz', Chr)
 
     #filterExACoutput('Exac_parse_OUT.csv')
