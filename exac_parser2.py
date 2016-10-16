@@ -25,40 +25,17 @@ import pdb
 
 VCF_HEADER = ['CHROM', 'POS', 'ID', 'REF', 'ALT', 'QUAL', 'FILTER', 'INFO']
 
-# Sets protein ID to search in dataframe
-#ENSP = "ENSP00000003084" #CFTR
-#ENSP = "ENSP00000269228" #NPC1
-ENSP = "ENSP00000262304" #PKD1
-ENSP = "ENSP00000262410" #MAPT
-#ENSG = "ENSG00000001626" #CFTR
-#ENSG = "ENSG00000141458" #NPC1
-ENSG = "ENSG00000008710" #PKD1
-ENSG = "ENSG00000186868" #ENSG
-# ENSG = "ENSG00000186868" #MAPT
-# ENSG = "ENSG00000272636" #Diagnostic - beginning of Chr17
-#ENST = "ENST00000003084" CFTR
-#ENST = 'ENST00000269228' #NPC1i
-ENST = "ENST00000262304" #PKD1
-ENST = "ENST00000262410" #MAPT
+# Sets transcript ID to search in dataframe
 
-
-GENE = "MAPT"
-FILENAME = "CFTR_PROV_extract.csv"
-FILENAME1 = "CFTR_PROVEANScores.csv"
-FILENAME2 = "MAPT_ExACScores.csv"
-FILENAME3 = "MAPT_MutPredScores.csv"
-FILENAME4 = "dbNSFP_output.csv"
-FILENAME5 = "dbNSFP_extract.csv"
-FILENAME6 = "MAPT_ExACScores.csv"
-#UniProt = "P13569" CFTR
-#UniProt = "O15118" #NPC1
-UniProt = "P98161" #PKD1
-UniProt = "P10636" #MAPT
-#Chr = '18' NPC1
-Chr = "16" #PKD1
 Chr = "17"
 
-# change directory to working with DAta
+ENST = "ENST00000262410" #MAPT
+
+OUT_FILE = "MAPT_ExACScores.csv"
+
+
+
+# change directory to working with Data
 #os.chdir("../Data/")
 cwd = os.getcwd()
 
@@ -68,7 +45,7 @@ def count_comments(filename):
     """Count comment lines (those that start with "#") in an optionally
 	gzipped file.
 	:param filename:  An optionally gzipped file.
-	https://gist.github.com/slowkow/6215557
+	modified from: https://gist.github.com/slowkow/6215557
 	"""
     comments = 0
 
@@ -84,10 +61,9 @@ def count_comments(filename):
 
     return comments
 
-
 def parse(line):
     """Parse a single VCF line and return an OrderedDict.
-	https://gist.github.com/slowkow/6215557
+	modified from: https://gist.github.com/slowkow/6215557
 	"""
     result = OrderedDict()
 
@@ -117,12 +93,12 @@ def parse(line):
 def lines(Chr):
     """Open an optionally gzipped VCF file and generate an OrderedDict for
 	each line.
-	https://gist.github.com/slowkow/6215557
+	Modiefied from: https://gist.github.com/slowkow/6215557
 	"""
     # TODO: see if there is a way to first map chromosomes within file and keep this data in a temp file?
     #print('opening file')
     #fn_open = gzip.open #if filename.endswith('.gz') else open
-    with open('/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf', 'rt') as fh, open(FILENAME6, 'w') as csvout:
+    with open('/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf', 'rt') as fh, open(OUT_FILE, 'w') as csvout:
         a = csv.writer(csvout)
         first_row = ('GENE_ID', 'TRANSCRIPT', 'TRANSCRIPT CHANGE', 'PROTEIN CHANGE', 'AA_POS', 'AA_CHANGE', 'MUTATION',
                      'ALLELE COUNT', 'ALLELE FREQUENCY')
@@ -145,7 +121,7 @@ def lines(Chr):
                 p_good_line = parse(good_line)
                 for k, e in enumerate(query):
                     for line in e.splitlines():
-                        if ENSP in line and "missense_variant" in line:  # TODO: add deletions
+                        if ENSP in line and "missense_variant" in line:
                             AlleleCount = ()
                             AlleleFrequency = ()
                             #print(':::::')
@@ -201,11 +177,7 @@ def find_good_lines(fh):
             if line[0:2] != i:
                 #print (line[0:2])
                 i = line[0:2]
-
-
             continue
-
-
         # if chrom > Chr:
         #     print ('end')
         #     break
