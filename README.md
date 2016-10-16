@@ -8,8 +8,6 @@ usage: exac_parser.py Chr, ENST, OUT_FILE.vcf
 example: exac_parser.py 17, ENST00000262410, MAPT_OUT.vcf
 
 
-#OUT_FILE = "MAPT_ExACScores.csv"
-
 exac_parser.py is currently configured to return missense variants using specified gene transcripts for:
 gene ID, transcript ID, variant position (amino acid), reference (REF) amino acid, variant amino acid (ALT), allele frequncy (AF) and Allele Count (AC) 
 but this can be extended to much more, such as population metrics, splicing variants, SNPs etc etc etc. 
