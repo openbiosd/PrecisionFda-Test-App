@@ -4,7 +4,9 @@ Parser for ExAC data which describes genetic variants in >60,000 individuals.
 For more information on ExAC read here:http://exac.broadinstitute.org/about
 Please read the McArthur blog for even more information: https://macarthurlab.org/blog/
 
-exac_parser.py is currently configured to mine missense variants for specific gene transcripts and proteins for:
+usage: exac_paerser.py Chr, ENST, OUT_FILE.vcf
+
+exac_parser.py is currently configured to return missense variants using specified gene transcripts for:
 gene ID, transcript ID, variant position (amino acid), reference (REF) amino acid, variant amino acid (ALT), allele frequncy (AF) and Allele Count (AC) 
 but this can be extended to much more, such as population metrics, splicing variants, SNPs etc etc etc. 
 
