@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3246d717-aebc-4594-ab79-c22044c0d80d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dbNSFP_parser1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PrecisionFda-Test-App.iml" afterPath="$PROJECT_DIR$/.idea/PrecisionFda-Test-App.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dbNSFP_parser2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbNSFP_parser.py" afterPath="$PROJECT_DIR$/dbNSFP_parser.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbNSFP_parser1.py" afterPath="$PROJECT_DIR$/dbNSFP_parser1.py" />
     </list>
     <ignored path="PrecisionFda-Test-App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +28,18 @@
       <file leaf-file-name="exac_parser1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exac_parser1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="-1517">
               <caret line="124" column="63" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exac_parser4.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exac_parser4.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -40,7 +48,7 @@
       <file leaf-file-name="dbNSFP_parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbNSFP_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="-62">
               <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
               <folding>
                 <element signature="e#129#166#0" expanded="true" />
@@ -49,12 +57,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbNSFP_parser1.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dbNSFP_parser1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbNSFP_parser1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="135">
+              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbNSFP_parser2.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dbNSFP_parser2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="e#129#166#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,6 +89,8 @@
       <list>
         <option value="$PROJECT_DIR$/exac_parser.py" />
         <option value="$PROJECT_DIR$/dbNSFP_parser.py" />
+        <option value="$PROJECT_DIR$/dbNSFP_parser1.py" />
+        <option value="$PROJECT_DIR$/dbNSFP_parser2.py" />
       </list>
     </option>
   </component>
@@ -379,17 +401,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exac_parser1.py">
+    <entry file="file://$PROJECT_DIR$/dbNSFP_parser1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="124" column="63" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="63" />
+        <state relative-caret-position="135">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbNSFP_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="-62">
           <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
           <folding>
             <element signature="e#129#166#0" expanded="true" />
@@ -397,11 +419,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbNSFP_parser1.py">
+    <entry file="file://$PROJECT_DIR$/exac_parser1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+        <state relative-caret-position="-1517">
+          <caret line="124" column="63" selection-start-line="124" selection-start-column="18" selection-end-line="124" selection-end-column="63" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exac_parser4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="29" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbNSFP_parser2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#129#166#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
