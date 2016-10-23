@@ -41,7 +41,7 @@ FILENAME5 = "dbNSFP_extract.csv"
 UniProt = "P98161" #PKD1
 UniProt = "P10636" #MAPT
 #Chr = '18' NPC1
-Chr = "16" #PKD1
+#Chr = "16" #PKD1
 Chr = "17"
 
 # change directory to working with DAta
@@ -79,7 +79,7 @@ def mine_dbNSFP(Chr, ENSG):
         'M': 'dbNSFP3.2a_variant.chrM',
     }
     # read from tsv.gz file/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf'
-    with zipfile.ZipFile('/work/in/dbnsfp/dbNSFPv3.2c.zip', 'r') as tsvin, open(FILENAME4, 'wt') as csvout:
+    with zipfile.ZipFile('/work/in/dbnsfp/dbNSFPv3.2a.zip', 'r') as tsvin, open(FILENAME4, 'wt') as csvout:
         tp = pd.read_csv(tsvin.open(chrfilesdict['1']), delimiter='\t', quoting=csv.QUOTE_NONE, iterator=True,
                          dtype=object, chunksize=10)  # header = None)
         writer = csv.writer(csvout)
