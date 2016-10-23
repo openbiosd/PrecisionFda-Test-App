@@ -108,7 +108,11 @@ def search_exac(Chr, ENST, OUT_FILE):
         a.writerows([first_row])
         print ('opened file')
         print('looking for chromosome ', Chr)
-        #items = list(range(1, 23))
+        for filename in os.listdir(os.getcwd()):
+		print(filename)
+		cwd=os.getcwd()
+		print cwd
+	#items = list(range(1, 23))
         #l = len(items)
         FinalResults = OrderedDict()
 
