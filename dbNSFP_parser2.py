@@ -31,7 +31,7 @@ FILENAME4 = "dbNSFP_output.csv"
 
 
 
-def mine_dbNSFP(Chr, ENSG):
+def mine_dbNSFP(Chr, ENSG, OUT_FILE):
     # TODO: should be able to read file names and iterate through them
     chrfilesdict = {
         '1': 'dbNSFP3.2a_variant.chr1',
@@ -59,9 +59,9 @@ def mine_dbNSFP(Chr, ENSG):
         'M': 'dbNSFP3.2a_variant.chrM',
     }
     # read from tsv.gz file/work/in/ExAC_data/ExAC.r0.3.1.sites.vep.vcf'
-    with zipfile.ZipFile('/work/in/dbnsfp/dbNSFPv3.2a.zip', 'r') as tsvin, open(OUT_FILE, 'wt') as csvout:
+    with zipfile.ZipFile('/work/in/dbnsfp/dbNSFPv3.2a.zip', 'r') as tsvin, open(OUT_FILE, 'w') as csvout:
         tp = pd.read_csv(tsvin.open(chrfilesdict[Chr]), delimiter='\t', quoting=csv.QUOTE_NONE, iterator=True,
-                         dtype=object, chunksize = 40)  # header = None)
+                         dtype=object, chunksize = 1000)  # header = None)
 
         writer = csv.writer(csvout)
         # for i in range(1):
@@ -168,7 +168,7 @@ def extract_dbNSFP(file):
 
 def main():
 
- mine_dbNSFP(Chr, ENSG)
+ mine_dbNSFP(Chr, ENSG, OUT_FILE)
 # extract_dbNSFP(FILENAME4)
 
 
