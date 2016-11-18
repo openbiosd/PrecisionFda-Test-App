@@ -3,6 +3,7 @@
 Parser for ExAC data which describes genetic variants in >60,000 individuals. 
 For more information on ExAC read here:http://exac.broadinstitute.org/about
 Please read the McArthur blog for even more information: https://macarthurlab.org/blog/
+Also listen to this presentation by Daniel McArthur about human variation and ExAC https://youtu.be/bM977g4hOz0
 
 usage: exac_parser.py Chr, ENST, OUT_FILE.vcf
 
